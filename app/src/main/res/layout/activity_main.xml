@@ -65,12 +65,24 @@
             android:textColor="@color/white"
             android:onClick="appendSlash"
             />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/backspace"
+            android:text="@string/backspace"
+            android:background="@color/colorAccent"
+            android:textColor="@color/white"
+            android:onClick="backspace"
+            />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
         <Button
             android:layout_width="match_parent"
@@ -78,6 +90,13 @@
             android:id="@+id/submit"
             android:text="@string/submit"
             android:onClick="submit"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/clear"
+            android:text="@string/clear"
+            android:onClick="clear"
             />
 
     </LinearLayout>

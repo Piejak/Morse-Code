@@ -6,4 +6,6 @@
     <string name="space"> </string>
     <string name="placeholder">Your morse code will be displayed here</string>
     <string name="submit">Submit</string>
+    <string name="backspace">back</string>
+    <string name="clear">clear</string>
 </resources>
