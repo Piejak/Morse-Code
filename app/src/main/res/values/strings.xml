@@ -4,4 +4,6 @@
     <string name="slash">/</string>
     <string name="dot">.</string>
     <string name="space"> </string>
+    <string name="placeholder">Your morse code will be displayed here</string>
+    <string name="submit">Submit</string>
 </resources>
