@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         if(morseText.equals("Your morse code will be displayed here")){
             // The morse code shouldn't lead with a space
             // TODO: handle this as an error
+            Toast.makeText(MainActivity.this, "Your morse code shouldn't lead with a space", Toast.LENGTH_SHORT).show();
         } else{
             morseText += " ";
             textView.setText(morseText);
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         if(morseText.equals("Your morse code will be displayed here")){
             // The morse code shouldn't lead with a slash
             // TODO: handle this as an error
+            Toast.makeText(MainActivity.this, "Your morse code shouldn't lead with a slash", Toast.LENGTH_SHORT).show();
         } else{
             morseText += " / ";
             textView.setText(morseText);
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     //user clicks the submit button
     public void submit(View view){
         //Translate the morse code
-        //T TODO: implement the morse code translation I already have written
         TextView textView = (TextView) findViewById(R.id.morseText);
         String translation = translateFromMorse(textView.getText().toString());
         textView.setText(translation);
