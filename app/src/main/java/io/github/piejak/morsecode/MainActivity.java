@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public void appendSpace(View view){
         TextView textView = (TextView) findViewById(R.id.morseText);
         String morseText = textView.getText().toString();
-        if(morseText.equals("Your morse code will be displayed here")){
+        if(morseText.equals("Your morse code will be displayed here") || morseText.equals("")){
             // The morse code shouldn't lead with a space
             Toast.makeText(MainActivity.this, "Can't start with a space", Toast.LENGTH_SHORT).show();
         } else{
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void appendSlash(View view){
         TextView textView = (TextView) findViewById(R.id.morseText);
         String morseText = textView.getText().toString();
-        if(morseText.equals("Your morse code will be displayed here")){
+        if(morseText.equals("Your morse code will be displayed here") || morseText.equals("")){
             // The morse code shouldn't lead with a slash
             Toast.makeText(MainActivity.this, "Can't start with a slash", Toast.LENGTH_SHORT).show();
         } else{
