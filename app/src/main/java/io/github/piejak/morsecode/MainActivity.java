@@ -1,25 +1,22 @@
 package io.github.piejak.morsecode;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
 import java.util.HashMap;
 
-import layout.fromMorse;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private DrawerLayout mDrawerLayout;
     private Toolbar mToolbar;
     private NavigationView navView;
@@ -32,8 +29,14 @@ public class MainActivity extends AppCompatActivity {
         setUpToolbar();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle drawerToggle = setUpDrawerToggle();
+        mDrawerLayout.setDrawerListener(drawerToggle);
         navView = (NavigationView) findViewById(R.id.navView);
+        setupDrawerContent(navView);
+    }
 
+    private ActionBarDrawerToggle setUpDrawerToggle(){
+        return new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
     }
 
     private void setupDrawerContent(NavigationView navigationView){
@@ -49,25 +52,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectDrawerItem(MenuItem menuItem){
-        Fragment fragment = null;
-
         Class fragmentClass;
+
+        Fragment fragment = null;
         switch (menuItem.getItemId()){
             case R.id.nav_first:
                 fragmentClass = fromMorse.class;
+                break;
+            case R.id.nav_second:
+                fragmentClass = toMorse.class;
+                break;
+            case R.id.nav_third:
+                fragmentClass = alphabet.class;
                 break;
             default:
                 fragmentClass = fromMorse.class;
         }
         try{
             fragment = (Fragment) fragmentClass.newInstance();
-
         } catch (Exception e){
             e.printStackTrace();
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContent, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
@@ -83,10 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
+        if (setUpDrawerToggle().onOptionsItemSelected(item)){
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -95,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState){
         super.onPostCreate(savedInstanceState);
+
+        setUpDrawerToggle().syncState();
     }
 
     //user clicks the dash button
