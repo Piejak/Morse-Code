@@ -16,6 +16,8 @@
         android:text="@string/placeholder"
         android:layout_gravity="center_horizontal"
         android:id="@+id/morseText"
+        android:textSize="18sp"
+        android:layout_weight="1"
         />
 
     <LinearLayout

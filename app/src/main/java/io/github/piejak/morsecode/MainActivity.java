@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         String morseText = textView.getText().toString();
         if(morseText.equals("Your morse code will be displayed here")){
             // The morse code shouldn't lead with a space
-            // TODO: handle this as an error
-            Toast.makeText(MainActivity.this, "Your morse code shouldn't lead with a space", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Can't start with a space", Toast.LENGTH_SHORT).show();
         } else{
             morseText += " ";
             textView.setText(morseText);
@@ -62,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
         String morseText = textView.getText().toString();
         if(morseText.equals("Your morse code will be displayed here")){
             // The morse code shouldn't lead with a slash
-            // TODO: handle this as an error
-            Toast.makeText(MainActivity.this, "Your morse code shouldn't lead with a slash", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Can't start with a slash", Toast.LENGTH_SHORT).show();
         } else{
             morseText += " / ";
             textView.setText(morseText);
