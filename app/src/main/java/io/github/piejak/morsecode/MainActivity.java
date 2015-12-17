@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
@@ -168,6 +169,14 @@ public class MainActivity extends AppCompatActivity{
         textView.setText(translation);
     }
 
+    //user clicks submit on translate to morse
+    public void submitToMorse(View view){
+        EditText editText = (EditText) findViewById(R.id.regularText);
+        TextView textView = (TextView) findViewById(R.id.transPlaceholder);
+        String translation = translateToMorse(editText.getText().toString());
+        textView.setText(translation);
+    }
+
     //user clicks the clear button
     public void clear(View view){
         //clear the text
@@ -312,6 +321,24 @@ public class MainActivity extends AppCompatActivity{
             }
         }
         outString += transFromMorseHM.get(letterBuffer);
+
+        return outString;
+    }
+
+    public static String translateToMorse(String inString){
+        HashMap transToMorseHM = transToMorseHM();
+        String outString = "";
+        String letterBuffer = "";
+        for(int i = 0; i < inString.length(); i++){
+            char letter = Character.toUpperCase(inString.charAt(i));
+            String letterString = "" + letter;
+            if(transToMorseHM.get(letterString) != null){
+                outString += transToMorseHM.get(letterString) + " ";
+            }
+            else{
+                return inString.charAt(i) + " could not be translated to morse, please try again.";
+            }
+        }
 
         return outString;
     }

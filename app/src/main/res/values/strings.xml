@@ -14,4 +14,5 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="regularText">Enter a message to translate</string>
+    <string name="transPlaceholder">Your translation will appear here.</string>
 </resources>
