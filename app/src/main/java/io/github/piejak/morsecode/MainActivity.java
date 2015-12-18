@@ -8,6 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -21,6 +23,10 @@ public class MainActivity extends AppCompatActivity{
     private DrawerLayout mDrawerLayout;
     private Toolbar mToolbar;
     private NavigationView navView;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private String[] alphabetData = {"H", " ", ".", "R", "J", "0", "?", "-", "1", "W", "9", "G", "'", "S", "3", "M", "V", "T", "2", "@", ")", "K", ":", "/", "Y", "L", "X", "C", "F", "=", "D", "(", ",", "\"", "E", "7", "I", "8", "A", "4", "N", "Z", "6", "5", "B", "O", "P", "U", "Q"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,19 @@ public class MainActivity extends AppCompatActivity{
         mDrawerLayout.setDrawerListener(drawerToggle);
         navView = (NavigationView) findViewById(R.id.navView);
         setupDrawerContent(navView);
+
+        Class fragmentClass = fromMorse.class;
+        Fragment fragment = null;
+        try{
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContent, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private ActionBarDrawerToggle setUpDrawerToggle(){
@@ -84,6 +103,51 @@ public class MainActivity extends AppCompatActivity{
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         mDrawerLayout.closeDrawers();
+    }
+
+    public void firstButton(View view){
+        Class fragmentClass = fromMorse.class;
+        Fragment fragment = null;
+        try{
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContent, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void secondButton(View view){
+        Class fragmentClass = fromMorse.class;
+        Fragment fragment = null;
+        try{
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContent, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void thirdButton(View view){
+        Class fragmentClass = fromMorse.class;
+        Fragment fragment = null;
+        try{
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContent, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private void setUpToolbar(){

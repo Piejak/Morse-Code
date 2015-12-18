@@ -42,7 +42,6 @@
             android:background="@color/colorAccent"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:textIsSelectable="true"
             />
 
 
